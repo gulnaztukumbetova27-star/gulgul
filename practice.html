@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Практика | Курс Веб-разработка | Школа кода</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        :root {
+            --blue-deep: #0a58ca;
+            --blue-bright: #0d6efd;
+            --sky-light: #e3f2fd;
+            --sky-soft: #cfe2ff;
+            --white: #ffffff;
+            --black: #000000;
+            --gray-dark: #1e293b;
+            --gray-light: #f1f5f9;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .navbar {
+            background-color: var(--white);
+            border-bottom: 2px solid var(--blue-bright);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.96);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0.9rem 1.5rem;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--blue-deep);
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--black);
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--black);
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--blue-bright);
+            border-bottom: 2px solid var(--blue-bright);
+            padding-bottom: 4px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            border-left: 5px solid var(--blue-bright);
+            padding-left: 1rem;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            transition: transform 0.2s;
+            border: 1px solid var(--sky-soft);
+            margin-bottom: 2rem;
+        }
+        .code-block {
+            background: #1e1e2f;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 14px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+        button {
+            background-color: var(--blue-bright);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+        }
+        button:hover {
+            background-color: var(--blue-deep);
+            transform: scale(0.97);
+        }
+        .demo-output {
+            background: var(--gray-light);
+            padding: 1rem;
+            border-radius: 16px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--blue-bright);
+            font-size: 0.95rem;
+        }
+        .live-editor {
+            background: #fef9e3;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        textarea {
+            width: 100%;
+            font-family: 'Courier New', monospace;
+            background: #1e1e2f;
+            color: #f8f8f2;
+            border-radius: 14px;
+            padding: 0.8rem;
+            border: none;
+            resize: vertical;
+        }
+        .test-question {
+            background: var(--sky-light);
+            padding: 1rem;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+        }
+        .quiz-option {
+            display: block;
+            margin: 0.6rem 0;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+        .quiz-option input {
+            margin-right: 12px;
+            transform: scale(1.1);
+        }
+        .result-badge {
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 0.5rem;
+        }
+        footer {
+            background: var(--black);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">Gulnaz<span>Code</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="lessons.html">Уроки</a></li>
+            <li><a href="practice.html" class="active">Практика</a></li>
+            <li><a href="tests.html">Тестики</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <div class="container">
+        <h2 class="section-title">🧪 Интерактивный тест: проверь знания</h2>
+        <div class="test-question" id="quickTestBlock">
+            <!-- динамический тест -->
+        </div>
+
+        
+        <footer>
+    <p>© 2025 Курс по HTML — для учеников 10-11 классов | Синий, голубой, белый, черный | Inter шрифт</p>
+    <p style="margin-top: 0.5rem; font-size:0.8rem;">Интерактивные элементы: ✅ Интерактивный тест ✅ Тесты с автопроверкой</p>
+</footer>
+
+<script>
+    // Быстрый тест
+    const quickBlock = document.getElementById('quickTestBlock');
+    if (quickBlock) {
+        quickBlock.innerHTML = `
+            <h3>🧠 Мини-тест: Теги HTML</h3>
+            <p>Что делает тег <code>&lt;strong&gt;</code>?</p>
+            <label class="quiz-option"><input type="radio" name="quizQuick" value="a"> Делает курсив</label>
+            <label class="quiz-option"><input type="radio" name="quizQuick" value="b"> Выделяет жирным и семантически важным</label>
+            <label class="quiz-option"><input type="radio" name="quizQuick" value="c"> Создает список</label>
+            <button id="quickCheckBtn">Ответить</button>
+            <div id="quickResult" class="result-badge"></div>
+        `;
+        const quickBtn = document.getElementById('quickCheckBtn');
+        if (quickBtn) {
+            quickBtn.onclick = () => {
+                const selected = document.querySelector('input[name="quizQuick"]:checked')?.value;
+                const resDiv = document.getElementById('quickResult');
+                if (selected === 'b') {
+                    resDiv.innerHTML = '<span style="color:#0a58ca; font-weight:bold;">✔ Верно! strong добавляет жирное начертание и важен для SEO.</span>';
+                } else {
+                    resDiv.innerHTML = '<span style="color:#b91c1c;">✘ Неправильно. Тег &lt;strong&gt; придает жирность и смысловое выделение.</span>';
+                }
+            };
+        }
+    }
+
+    // Задание с изображением
+    const imgRun = document.getElementById('imageTaskBtn');
+    const imgEditor = document.getElementById('imageTaskEditor');
+    const imgPreview = document.getElementById('imageTaskPreview');
+    if (imgRun && imgEditor && imgPreview) {
+        imgRun.onclick = () => {
+            imgPreview.innerHTML = imgEditor.value;
+        };
+        imgPreview.innerHTML = imgEditor.value;
+    }
+
+    // Свободный редактор
+    const practiceRun = document.getElementById('practiceRunBtn');
+    const practiceEditor = document.getElementById('practiceEditor');
+    const practicePreview = document.getElementById('practicePreview');
+    if (practiceRun && practiceEditor && practicePreview) {
+        practiceRun.onclick = () => {
+            practicePreview.innerHTML = practiceEditor.value;
+        };
+        practicePreview.innerHTML = practiceEditor.value;
+    }
+</script>
+</body>
+</html>

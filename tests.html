@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Тестики | Курс Веб-разработка | Школа кода</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        :root {
+            --blue-deep: #0a58ca;
+            --blue-bright: #0d6efd;
+            --sky-light: #e3f2fd;
+            --sky-soft: #cfe2ff;
+            --white: #ffffff;
+            --black: #000000;
+            --gray-dark: #1e293b;
+            --gray-light: #f1f5f9;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .navbar {
+            background-color: var(--white);
+            border-bottom: 2px solid var(--blue-bright);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.96);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0.9rem 1.5rem;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--blue-deep);
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--black);
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--black);
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--blue-bright);
+            border-bottom: 2px solid var(--blue-bright);
+            padding-bottom: 4px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            border-left: 5px solid var(--blue-bright);
+            padding-left: 1rem;
+        }
+        button {
+            background-color: var(--blue-bright);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+        }
+        button:hover {
+            background-color: var(--blue-deep);
+            transform: scale(0.97);
+        }
+        .test-question {
+            background: var(--sky-light);
+            padding: 1rem;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+        }
+        .quiz-option {
+            display: block;
+            margin: 0.6rem 0;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+        .quiz-option input {
+            margin-right: 12px;
+            transform: scale(1.1);
+        }
+        .result-badge {
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 0.5rem;
+        }
+        footer {
+            background: var(--black);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">Gulnaz<span>Code</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="lessons.html">Уроки</a></li>
+            <li><a href="practice.html">Практика</a></li>
+            <li><a href="tests.html" class="active">Тестики</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <div class="container">
+        <h2 class="section-title">📝 Тестирование с автопроверкой</h2>
+        <div id="testContainer">
+            <!-- Динамически заполняемый тест -->
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 Курс по HTML — для учеников 10-11 классов | Синий, голубой, белый, черный | Inter шрифт</p>
+    <p style="margin-top: 0.5rem; font-size:0.8rem;">Интерактивные элементы: ✅ Интерактивный тест ✅ Тесты с автопроверкой</p>
+</footer>
+
+<script>
+    const container = document.getElementById('testContainer');
+    if (container) {
+        container.innerHTML = `
+            <div class="test-question">
+                <h3>❓ Вопрос 1. Какой тег используется для создания гиперссылки?</h3>
+                <label class="quiz-option"><input type="radio" name="q1" value="a"> &lt;link&gt;</label>
+                <label class="quiz-option"><input type="radio" name="q1" value="b"> &lt;a&gt;</label>
+                <label class="quiz-option"><input type="radio" name="q1" value="c"> &lt;href&gt;</label>
+            </div>
+            <div class="test-question">
+                <h3>❓ Вопрос 2. Какой атрибут задает альтернативный текст для изображения?</h3>
+                <label class="quiz-option"><input type="radio" name="q2" value="a"> title</label>
+                <label class="quiz-option"><input type="radio" name="q2" value="b"> src</label>
+                <label class="quiz-option"><input type="radio" name="q2" value="c"> alt</label>
+            </div>
+            <div class="test-question">
+                <h3>❓ Вопрос 3. Какой тег определяет заголовок первого уровня?</h3>
+                <label class="quiz-option"><input type="radio" name="q3" value="a"> &lt;h6&gt;</label>
+                <label class="quiz-option"><input type="radio" name="q3" value="b"> &lt;heading&gt;</label>
+                <label class="quiz-option"><input type="radio" name="q3" value="c"> &lt;h1&gt;</label>
+            </div>
+            <button id="submitTestBtn" style="background:#0a58ca;">✅ Проверить ответы</button>
+            <div id="testResult" class="result-badge" style="margin-top:20px;"></div>
+        `;
+
+        const submitBtn = document.getElementById('submitTestBtn');
+        if (submitBtn) {
+            submitBtn.onclick = () => {
+                const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+                const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+                const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+                let score = 0;
+                if (q1 === 'b') score++;
+                if (q2 === 'c') score++;
+                if (q3 === 'c') score++;
+                const resultDiv = document.getElementById('testResult');
+                if (score === 3) {
+                    resultDiv.innerHTML = `<span style="background:#0a58ca; color:white; padding:0.5rem 1rem; border-radius:40px;">Ваш результат: ${score} из 3. Отлично! ✨</span>`;
+                } else {
+                    resultDiv.innerHTML = `<span style="background:#8B0000; color:white; padding:0.5rem 1rem; border-radius:40px;">Ваш результат: ${score} из 3. Попробуй еще раз, изучи уроки.</span>`;
+                }
+            };
+        }
+    }
+</script>
+</body>
+</html>
